@@ -1,31 +1,15 @@
-
-import {Component, useEffect, useState} from 'react';
-import ContainerCategories from './components/categories/categories'
-
-
-
+import {Routes, Route} from 'react-router-dom'
+import Home from './routes/home'
 
 const App = () => {
-  const [category, setCategory] = useState([])
-
-  useEffect(()=>{
-    fetch('https://hallfaste.com/Hally/user.json')
-    .then(response => response.json())
-    .then((event)=>setCategory(event))
-  },[category])
-
-
-
-
   return (
-      <ContainerCategories category={category} />
+  <Routes>  
+      <Route path="/home" element={<Home/>}/>
+      <Route path="/shop" element={'ola'}/>
 
 
-     )
-     
-    
-
- 
+  </Routes>
+  
+  )
 }
-
 export default App;
