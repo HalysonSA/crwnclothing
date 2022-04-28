@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import {Component, useEffect, useState} from 'react';
+import ContainerCategories from './components/categories/categories'
+
+
+
+
+const App = () => {
+  const [category, setCategory] = useState([])
+
+  useEffect(()=>{
+    fetch('https://hallfaste.com/Hally/user.json')
+    .then(response => response.json())
+    .then((event)=>setCategory(event))
+  },[category])
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <ContainerCategories category={category} />
+
+
+     )
+     
+    
+
+ 
 }
 
 export default App;
