@@ -1,6 +1,7 @@
 
 import {Component, useEffect, useState} from 'react';
-import ContainerCategories from '../components/categories/categories'
+
+import ContainerCategories from '../../components/categories/categories'
 
 
 
@@ -18,9 +19,11 @@ const Home = () => {
 
 
   return (
+    <div>
+      
       <ContainerCategories category={category} />
 
-
+    </div>
      )
      
     

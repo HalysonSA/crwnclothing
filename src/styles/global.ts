@@ -19,5 +19,10 @@ export const GlobalStyle = createGlobalStyle`
         outline: none;
         border: none;
         }
+        *,a{
+            text-decoration: none;
+            color:black;
+
     }
+}
 `
