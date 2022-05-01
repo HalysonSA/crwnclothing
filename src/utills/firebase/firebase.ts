@@ -3,8 +3,8 @@ import {
     getAuth,
     signInWithPopup,
     signInWithRedirect,
-    GithubAuthProvider,
-    GoogleAuthProvider
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword
  } from 'firebase/auth'
 
 import { 
@@ -27,37 +27,38 @@ const FirebaseConfig = {
   
   const Firebaseapp = initializeApp(FirebaseConfig);
 
-  const provider = new GoogleAuthProvider();
+  const GoogleProvider = new GoogleAuthProvider();
 
-  provider.setCustomParameters({
+  GoogleProvider.setCustomParameters({
 
     prompt:'select_account',
   });
 
   export const auth = getAuth()
 
-  export const signInWithGooglePopUp = () => signInWithPopup(auth, provider);
+  export const signInWithGooglePopUp = () => signInWithPopup(auth, GoogleProvider);
 
   export const db = getFirestore();
 
 
 
-  export const createUser = async(userAuth:any) =>{
+  export const createUserGoogle = async (userAuth:any,additionalInfo = {}) =>{
+        if(!userAuth) return;
 
+            const userDocRef = doc(db,'users',userAuth.uid);
 
-            const userDocRef = doc(db,'users',userAuth.uid)
-
-            const userSnapshot = await getDoc(userDocRef)
+            const userSnapshot = await getDoc(userDocRef);
 
             if(!userSnapshot.exists()){
-                const {displayName, email} = userAuth
-                const createdAt = new Date()
+                const {displayName, email} = userAuth;
+                const createdAt = new Date();
             
                 try{
                     await setDoc(userDocRef,{
                         displayName,
                         email,
-                        createdAt
+                        createdAt,
+                        ...additionalInfo,
                     });
                 }
                 catch (error:any) {
@@ -69,8 +70,14 @@ const FirebaseConfig = {
   }
   
 
+export const createUserEmail = async(email:any,password:any) => {
 
+    if (!email || !password) return;
 
+    return await createUserWithEmailAndPassword(auth, email, password);
+
+};
+ 
 
 
 
