@@ -4,7 +4,8 @@ import {
     signInWithPopup,
     signInWithRedirect,
     GoogleAuthProvider,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    AuthError
  } from 'firebase/auth'
 
 import { 
@@ -72,9 +73,9 @@ const FirebaseConfig = {
 
 export const createUserEmail = async(email:any,password:any) => {
 
-    if (!email || !password) return;
+    if (!email || !password) throw new Error(`Invalid user`);
 
-    return await createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password);
 
 };
  
