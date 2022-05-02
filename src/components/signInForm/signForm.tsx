@@ -4,7 +4,12 @@ createUserGoogle}
 from '../../utills/firebase/firebase'
 
 import {FirebaseError} from '@firebase/util'
+import {
+    
+    Button
+} from './style'
 
+import { FormInput } from '../formInput/formInput'
 
 const defaultFormField ={
     displayName:'',
@@ -13,11 +18,15 @@ const defaultFormField ={
     confirmPassword:''
 }
 
+
+
 export const SignUpForm = () =>{
     const [formField,setFormField] = useState(defaultFormField)
     const {displayName,email,password,confirmPassword} = formField;
     console.log(formField)
-
+    const resetForm = () => {
+        setFormField(defaultFormField);
+    }
 
     const handleSubmit = async(event:any) =>{
 
@@ -33,7 +42,7 @@ export const SignUpForm = () =>{
             const  {user}  = await createUserEmail(email,password);
             
             await createUserGoogle(user, { displayName });
-            
+            resetForm();
           } catch (error) {
             if(error instanceof FirebaseError) {
                 if (error.code === 'auth/email-already-in-use') {
@@ -56,20 +65,22 @@ export const SignUpForm = () =>{
 
         setFormField({...formField,[name]:value})
     }
+   
     return(
         <div>
             <h1>Cadastre-se</h1>
             <form onSubmit={handleSubmit}>
-                <label >Name</label>
-                <input type="text"  onChange={handlechange} name='displayName' value={displayName} />
-                <label >E-mail</label>
-                <input type="email"   onChange={handlechange} name='email' value={email}/>
-                <label >Password</label>
-                <input type="password"  onChange={handlechange} name='password' value={password} />
-                <label >ConfirmPassword</label>
-                <input type="password"  onChange={handlechange} name='confirmPassword' value={confirmPassword} />
-                <button type="submit">Submit </button>
-
+                
+                
+                
+                
+                <FormInput label="Name" type="text"  onChange={handlechange} name='displayName' value={displayName}/>
+                <FormInput label="E-mail" type="email"  onChange={handlechange} name='email' value={email}/>
+                <FormInput label="Password" type="password"  onChange={handlechange} name='password' value={password}/>
+                <FormInput label="ConfirmPassword" type="password"  onChange={handlechange} name='confirmPassword' value={confirmPassword}/>
+                
+                
+                <Button type="submit">SIGN UP</Button>
 
             </form>
 

@@ -12,10 +12,8 @@ export const GlobalStyle = createGlobalStyle`
             cursor:pointer;
 
         }
-        input{
-
-        }
-        *,input,button{
+        
+        button{
         outline: none;
         border: none;
         }

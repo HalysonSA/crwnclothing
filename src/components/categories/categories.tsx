@@ -4,7 +4,7 @@ import {
     CategoryContainer,
     CategoryBody,
     BackgroundImage
-  } from '../../styles/App'
+  } from './style'
   
 type categories={
     category:{

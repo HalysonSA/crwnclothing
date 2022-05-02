@@ -1,6 +1,8 @@
 import { SignUpForm } from '../../components/signInForm/signForm'
 import {signInWithGooglePopUp,createUserGoogle} from '../../utills/firebase/firebase'
-
+import {
+    
+    Button} from './style'
 
 const SignIn = () => {
     const login = async () => {
@@ -9,8 +11,13 @@ const SignIn = () => {
     }
     return (
         <div>
-            <h1>sign in</h1>
-            <button onClick={login}>Login com o google</button>
+            <h1>I Already have an account </h1>
+            <p>Sign in with your email and password</p>
+          
+                <Button onClick={login}>SIGN IN</Button>
+                
+
+
             <SignUpForm/>
         </div>
         
