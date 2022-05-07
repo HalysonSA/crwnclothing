@@ -5,7 +5,7 @@ from '../../utills/firebase/firebase'
 
 import {FirebaseError} from '@firebase/util'
 import {
-    
+    Div,
     Button
 } from './style'
 
@@ -36,19 +36,25 @@ export const SignUpForm = () =>{
             alert('passwords do not match');
             return;
         }
+        else if(password.length < 6){
+            alert('password needs at least 6 digits')
+        }
+        
       
         try {
            
             const  {user}  = await createUserEmail(email,password);
             
             await createUserGoogle(user, { displayName });
+            alert('User was created successfully')
             resetForm();
           } catch (error) {
             if(error instanceof FirebaseError) {
                 if (error.code === 'auth/email-already-in-use') {
                     alert('Cannot create user, email already in use');
                     
-                  } 
+                }
+                
                  
 
             }
@@ -67,8 +73,8 @@ export const SignUpForm = () =>{
     }
    
     return(
-        <div>
-            <h1>Cadastre-se</h1>
+        <Div>
+            <h1>SIGN UP</h1>
             <form onSubmit={handleSubmit}>
                 
                 
@@ -76,8 +82,8 @@ export const SignUpForm = () =>{
                 
                 <FormInput label="Name" type="text"  onChange={handlechange} name='displayName' value={displayName}/>
                 <FormInput label="E-mail" type="email"  onChange={handlechange} name='email' value={email}/>
-                <FormInput label="Password" type="password"  onChange={handlechange} name='password' value={password}/>
-                <FormInput label="ConfirmPassword" type="password"  onChange={handlechange} name='confirmPassword' value={confirmPassword}/>
+                <FormInput label="Password" type="password"  onChange={handlechange} name='password'  value={password}/>
+                <FormInput label="ConfirmPassword" type="password"  onChange={handlechange} name='confirmPassword'  value={confirmPassword}/>
                 
                 
                 <Button type="submit">SIGN UP</Button>
@@ -87,7 +93,7 @@ export const SignUpForm = () =>{
 
 
 
-        </div>
+        </Div>
 
 
 

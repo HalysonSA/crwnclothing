@@ -5,6 +5,7 @@ import {
     signInWithRedirect,
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
     AuthError
  } from 'firebase/auth'
 
@@ -78,7 +79,14 @@ export const createUserEmail = async(email:any,password:any) => {
     return createUserWithEmailAndPassword(auth, email, password);
 
 };
- 
+
+export const signUserEmail = async(email:any,password:any) => {
+
+    if (!email || !password) throw new Error(`Invalid user`);
+
+    return signInWithEmailAndPassword(auth, email, password);
+
+};
 
 
 

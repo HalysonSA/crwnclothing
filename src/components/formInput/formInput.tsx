@@ -8,17 +8,11 @@ export const FormInput = ({label,...otherProps}:any) => {
             <FormLabel>
                 {label}
             </FormLabel>
-            <InputForm {...otherProps} />
+            <InputForm   required  {...otherProps} ></InputForm>
 
 
         </FormDiv>
-
-           
-            
-
-
-
-        
+    
       
     )
 }

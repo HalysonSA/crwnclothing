@@ -1,10 +1,28 @@
 import styled from 'styled-components'
 
 
-export const FormDiv = styled.div`
 
-position: relative;
-  margin: 45px 0;
+
+export const FormDiv = styled.div`
+  
+
+  position: relative;
+  margin: 45px 0; 
+  
+
+  &:focus-within{
+    
+    label{
+      
+      top: -14px;
+      font-size: 12px;
+      color: black;
+      
+
+    }
+  
+  }
+  
 
 `
 export const InputForm = styled.input`
@@ -20,16 +38,17 @@ export const InputForm = styled.input`
     border-bottom: 1px solid gray;
     margin: 25px 0;
 
+    
+
     &:focus {
       outline: none;
     }
-    input[type='password'] {
-    letter-spacing: 0.3rem;
-  }
+   
+   
 
 `
 export const FormLabel = styled.label`
-
+   
     color: gray;
     font-size: 16px;
     font-weight: normal;
@@ -38,4 +57,6 @@ export const FormLabel = styled.label`
     left: 5px;
     top: 10px;
     transition: 300ms ease all;
+   
+    
 `

@@ -1,31 +1,40 @@
 import React,{ Fragment } from 'react'
 import logo from '../../assets/HR.svg'
 import {Link, Outlet} from 'react-router-dom'
+import { Div} from './style'
+
 
 const Navbar = () =>{
     
     return(
-      <div>
+      <Div>
         <Fragment>
-            <div>
-                <div>
+            <Div className='navbar' >
+                <Div>
                     <Link to='/'>
-                        <img height='50' width='50' src={logo} alt="ola" /> 
+                        <img height='75' width='75' src={logo} alt="ola" /> 
                     </Link>
                         
-                </div>
-            <div>
-                <Link to='/shop'>
-                    Shop
-                </Link>
-                <Link to='/signIn'>
-                    Sign-in
-                </Link>
-            </div>
-        </div>
+                </Div>
+                <Div className='linkcontainer'>
+                    <Div className='link'>  
+                        <Link to='/shop'>
+                            Shop
+                        </Link>
+                    </Div>
+
+                    <Div className='link'>
+                        <Link to='/auth'>
+                                Sign-in
+                        </Link>
+                    </Div>
+                    
+                    
+                </Div>
+            </Div>
         <Outlet/>
         </Fragment>
-    </div>
+    </Div>
     )
   }
   export default Navbar;
