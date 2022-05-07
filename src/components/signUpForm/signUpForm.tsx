@@ -1,6 +1,6 @@
-import { useState} from 'react'
+import { useContext, useState} from 'react'
 import {createUserEmail,
-createUserGoogle} 
+createUserAuth} 
 from '../../utills/firebase/firebase'
 
 import {FirebaseError} from '@firebase/util'
@@ -10,6 +10,7 @@ import {
 } from './style'
 
 import { FormInput } from '../formInput/formInput'
+import { UserContext } from '../../context/usercontext'
 
 const defaultFormField ={
     displayName:'',
@@ -23,7 +24,9 @@ const defaultFormField ={
 export const SignUpForm = () =>{
     const [formField,setFormField] = useState(defaultFormField)
     const {displayName,email,password,confirmPassword} = formField;
-    console.log(formField)
+ 
+    const {setCurrentUser} = useContext(UserContext)
+
     const resetForm = () => {
         setFormField(defaultFormField);
     }
@@ -44,8 +47,8 @@ export const SignUpForm = () =>{
         try {
            
             const  {user}  = await createUserEmail(email,password);
-            
-            await createUserGoogle(user, { displayName });
+            setCurrentUser(user);
+            await createUserAuth(user, { displayName });
             alert('User was created successfully')
             resetForm();
           } catch (error) {
@@ -82,7 +85,7 @@ export const SignUpForm = () =>{
                 
                 <FormInput label="Name" type="text"  onChange={handlechange} name='displayName' value={displayName}/>
                 <FormInput label="E-mail" type="email"  onChange={handlechange} name='email' value={email}/>
-                <FormInput label="Password" type="password"  onChange={handlechange} name='password'  value={password}/>
+                <FormInput label="Password" type="password"  onChange={handlechange} name='password'   value={password}/>
                 <FormInput label="ConfirmPassword" type="password"  onChange={handlechange} name='confirmPassword'  value={confirmPassword}/>
                 
                 

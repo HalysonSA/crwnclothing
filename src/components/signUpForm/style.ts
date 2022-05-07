@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Div = styled.div`
         grid-area: 1 / 2
                 / 1 / 2;
+        width: 70%;
     h1{
         font-family: 'Encode Sans Semi Condensed', sans-serif;
     }

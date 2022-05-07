@@ -1,11 +1,16 @@
-import React,{ Fragment } from 'react'
+import React,{ Fragment, useContext } from 'react'
 import logo from '../../assets/HR.svg'
 import {Link, Outlet} from 'react-router-dom'
 import { Div} from './style'
-
-
+import { UserContext } from '../../context/usercontext'
+import { SignOutUser } from '../../utills/firebase/firebase'
 const Navbar = () =>{
-    
+    const {currentUser,setCurrentUser} = useContext(UserContext)
+
+    const signOutHandler = async() => {
+        await SignOutUser();
+        setCurrentUser(null)
+    }
     return(
       <Div>
         <Fragment>
@@ -24,9 +29,15 @@ const Navbar = () =>{
                     </Div>
 
                     <Div className='link'>
-                        <Link to='/auth'>
-                                Sign-in
+                        {currentUser?(
+                            <span onClick={signOutHandler}>Sign out</span>):
+                            <Link to='/auth'>
+                            Sign in
+                            
                         </Link>
+
+                        }
+                       
                     </Div>
                     
                     

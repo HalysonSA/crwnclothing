@@ -4,7 +4,9 @@ import styled from 'styled-components'
 export const Div = styled.div`
     
     display: grid;
+    gap:5rem;
     margin:2rem;
+    
     
   
     
@@ -14,9 +16,17 @@ export const Div = styled.div`
 
 
 `
+export const DivForm=styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+`
 export const FormGrid = styled.div`
-    grid-area:  1 / 2
+    grid-area:  1 / 2/
                 1 / 2;
+    width: 70%;
+    
+    
 
 `
 export const Button = styled.button`
@@ -25,7 +35,7 @@ export const Button = styled.button`
     width: auto;
     height: 50px;
     color:white;
-    background-color:#4285f4;
+    background-color:#0086FF;
     transition: 0.4s;
     padding:1rem;
     min-width: 165px;
@@ -37,7 +47,7 @@ export const Button = styled.button`
     font-weight: normal;
     
     &:hover{
-        background-color:#357ae8;
+        background-color:#499FED;
         
         border: none;
 

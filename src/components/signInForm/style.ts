@@ -7,6 +7,10 @@ export const Div = styled.div`
         font-family: 'Encode Sans Semi Condensed', sans-serif;
     }
 `
+export const DivButton = styled.div`
+    display: flex;
+    justify-content: space-between;
+    `
 
 export const Button = styled.button`
     display: flex;
@@ -34,4 +38,35 @@ export const Button = styled.button`
 
        
     }
+    
+    
 `
+export const ButtonGoogle = styled.button`
+    
+        display: flex;
+        justify-content:center;
+        width: auto;
+        height: 50px;
+        color:white;
+        background-color:#0086FF;
+        transition: 0.4s;
+        padding:1rem;
+        min-width: 165px;
+        width: auto;
+        border:none;
+        font-size: 15px;
+        text-transform: uppercase;
+        font-family: 'Encode Sans Semi Condensed', sans-serif;
+        font-weight: normal;
+    
+        &:hover{
+            background-color:#499FED;
+            
+            border: none;
+
+        
+        }
+    
+`
+    
+

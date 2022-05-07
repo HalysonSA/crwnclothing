@@ -1,13 +1,16 @@
-import { useState} from 'react'
-import {createUserGoogle,signUserEmail} 
-from '../../utills/firebase/firebase'
+import { useState,useContext} from 'react'
+import { UserContext } from '../../context/usercontext'
 
+
+import {createUserAuth,signUserEmail,signInWithGooglePopUp} 
+from '../../utills/firebase/firebase'
 import {FirebaseError} from '@firebase/util'
 import {
     Div,
-    Button
+    Button,
+    ButtonGoogle,
+    DivButton
 } from './style'
-
 import { FormInput } from '../formInput/formInput'
 
 const defaultFormField ={
@@ -18,11 +21,19 @@ const defaultFormField ={
 }
 
 
-
 export const SignInForm = () =>{
     const [formField,setFormField] = useState(defaultFormField)
-    const {displayName,email,password,confirmPassword} = formField;
-    console.log(formField)
+    const {email,password} = formField;
+    const { setCurrentUser } = useContext(UserContext);
+
+    const SignWithGoogle = async () => {
+    
+    const { user } = await signInWithGooglePopUp();
+    setCurrentUser(user);
+        
+    } 
+
+    
     const resetForm = () => {
         setFormField(defaultFormField);
     }
@@ -39,10 +50,10 @@ export const SignInForm = () =>{
       
         try {
            
-            const  response  = await signUserEmail(email,password);
+            const  {user}  = await signUserEmail(email,password);
             
-                console.log(response)
-            alert('login')
+            setCurrentUser(user);
+            
             resetForm();
           } catch (error) {
             
@@ -86,9 +97,12 @@ export const SignInForm = () =>{
                 <FormInput label="E-mail" type="email"  onChange={handlechange} name='email' value={email}/>
                 <FormInput label="Password" type="password"  onChange={handlechange} name='password'  value={password}/>
 
-                
-                <Button type="submit">SIGN IN</Button>
-
+                <DivButton>
+                    <Button type="submit">SIGN IN</Button>
+                    <ButtonGoogle onClick={SignWithGoogle}>Google Sign In</ButtonGoogle>
+                    
+                </DivButton>
+               
             </form>
 
 

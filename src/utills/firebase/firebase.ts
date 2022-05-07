@@ -6,7 +6,8 @@ import {
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    AuthError
+    signOut,
+
  } from 'firebase/auth'
 
 import { 
@@ -38,20 +39,25 @@ const FirebaseConfig = {
 
   export const auth = getAuth()
 
-  export const signInWithGooglePopUp = () => signInWithPopup(auth, GoogleProvider);
+  export const signInWithGooglePopUp = () => 
+       signInWithPopup(auth, GoogleProvider);
+export const signInWithGoogleRedirect = () =>
+       signInWithRedirect(auth, GoogleProvider);
 
   export const db = getFirestore();
 
 
 
-  export const createUserGoogle = async (userAuth:any,additionalInfo = {}) =>{
+  export const createUserAuth = async (userAuth:any,additionalInfo = {}) =>{
+     
         if(!userAuth) return;
-
+            
             const userDocRef = doc(db,'users',userAuth.uid);
 
             const userSnapshot = await getDoc(userDocRef);
 
             if(!userSnapshot.exists()){
+                
                 const {displayName, email} = userAuth;
                 const createdAt = new Date();
             
@@ -64,7 +70,7 @@ const FirebaseConfig = {
                     });
                 }
                 catch (error:any) {
-                    console.log('error creating the user', error.message);
+                    console.log('error creating the user', error);
                   }
                 }
                 
@@ -87,6 +93,8 @@ export const signUserEmail = async(email:any,password:any) => {
     return signInWithEmailAndPassword(auth, email, password);
 
 };
+export const SignOutUser = () => (signOut(auth))
+
 
 
 
