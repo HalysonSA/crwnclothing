@@ -1,4 +1,4 @@
-import { useContext, useState} from 'react'
+import {  useState} from 'react'
 import {createUserEmail,
 createUserAuth} 
 from '../../utills/firebase/firebase'
@@ -25,7 +25,7 @@ export const SignUpForm = () =>{
     const [formField,setFormField] = useState(defaultFormField)
     const {displayName,email,password,confirmPassword} = formField;
  
-    const {setCurrentUser} = useContext(UserContext)
+    
 
     const resetForm = () => {
         setFormField(defaultFormField);
@@ -47,7 +47,7 @@ export const SignUpForm = () =>{
         try {
            
             const  {user}  = await createUserEmail(email,password);
-            setCurrentUser(user);
+            
             await createUserAuth(user, { displayName });
             alert('User was created successfully')
             resetForm();

@@ -5,12 +5,9 @@ import { Div} from './style'
 import { UserContext } from '../../context/usercontext'
 import { SignOutUser } from '../../utills/firebase/firebase'
 const Navbar = () =>{
-    const {currentUser,setCurrentUser} = useContext(UserContext)
+    const {currentUser} = useContext(UserContext)
 
-    const signOutHandler = async() => {
-        await SignOutUser();
-        setCurrentUser(null)
-    }
+    
     return(
       <Div>
         <Fragment>
@@ -30,7 +27,7 @@ const Navbar = () =>{
 
                     <Div className='link'>
                         {currentUser?(
-                            <span onClick={signOutHandler}>Sign out</span>):
+                            <span onClick={SignOutUser}>Sign out</span>):
                             <Link to='/auth'>
                             Sign in
                             
