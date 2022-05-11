@@ -1,29 +1,41 @@
-import react from 'react';
-/*
+import {CardContainer,Footer,Price,Name,ProductsContainer,Button} from './style';
 
-type Products = {
+type Products={
     product:{
         id:any,
-        name:string,
-        imageUrl:any,
-        price:number
+        price:number,
+        imageUrl:string,
+        name:string
     }[]
-}
-const ShopProduct = (props:Products) => {
+      
+  }
+
+const ProductCard = (props:Products) => {
     
-    return (
-        <div>
-            {props.product.map((product:any) => (
-                <div key={product.id}>
-                <img style={{height:'10vh', width:'20vw',backgroundImage:`url(${product.imageUrl})`}}/>
-                <h1>{product.name}</h1>
-                <p>{product.price}</p>
-                </div>
-            ))}
+       const {product} = props
        
-        </div>
+       console.log('card')
     
-        )
-}
-export default ShopProduct;
-*/
+    return(
+       <ProductsContainer>
+            {product.map(( product:any)=>(
+                <CardContainer key={product.id} >
+                    <img src={product.imageUrl} alt={`${product.name}`} />
+                    <Footer>
+                        <Name>
+                                {product.name}
+                        </Name>
+                        <Price>
+                                {product.price}
+                        </Price>
+                    </Footer>
+                    <Button>ADD TO CART</Button>
+                    </CardContainer>
+            ))}
+
+        </ProductsContainer>
+         
+         
+    )
+            }
+export default ProductCard

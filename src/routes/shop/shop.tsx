@@ -1,29 +1,19 @@
 import {useEffect,useState,useContext} from 'react'
 /*import ShopProduct from '../../components/products/products'*/
 import { ProductsContext } from '../../context/productcontext'
+import ProductCard from '../../components/products/products'
 
 
 const Shop = () => {
   const {products} = useContext(ProductsContext)
-  /*const [product, setProduct] = useState([])
-
-  useEffect(()=>{
-    fetch('https://hallfaste.com/Hally/product.json')
-    .then(response => response.json())
-    .then((event)=>setProduct(event))
-  },[product])*/
+  console.log('shop')
     return(
-      <div>
-          {/* <ShopProduct product={product}/>*/}
-
-
-          {products.map(( { id , name}:any)=>(
-            <div key={id}>
-                <h1>{name}</h1>
-
-              </div>
-          ))}
-      </div>
+      
+         
+           <ProductCard product={products}/>
+       
+      
+ 
      
       
     )
