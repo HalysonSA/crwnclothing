@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 
 export const Div = styled.div`
+   
     & .navbar{
         display: flex;
         align-items: center;

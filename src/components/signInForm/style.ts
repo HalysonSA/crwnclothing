@@ -30,6 +30,7 @@ export const Button = styled.button`
     text-transform: uppercase;
     font-family: 'Open Sans Condensed';
     font-weight: normal;
+
     
     &:hover{
         background-color:white;
@@ -38,6 +39,7 @@ export const Button = styled.button`
 
        
     }
+    
     
     
 `

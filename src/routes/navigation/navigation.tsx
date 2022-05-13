@@ -1,15 +1,20 @@
 import React,{ Fragment, useContext } from 'react'
 import logo from '../../assets/HR.svg'
 import {Link, Outlet} from 'react-router-dom'
+
+import CardIcon from '../../components/cardIcon/cardIcon'
+import CartDropdown from '../../components/cartDropdown/CartDropdown'
+
 import { Div} from './style'
 import { UserContext } from '../../context/usercontext'
+import { CartContext } from '../../context/cartcontext'
 import { SignOutUser } from '../../utills/firebase/firebase'
 const Navbar = () =>{
     const {currentUser} = useContext(UserContext)
-
+    const {isCartOpen} = useContext(CartContext)
     
     return(
-      <Div>
+      <Div >
         <Fragment>
             <Div className='navbar' >
                 <Div>
@@ -32,13 +37,14 @@ const Navbar = () =>{
                             Sign in
                             
                         </Link>
-
+                       
                         }
                        
                     </Div>
-                    
-                    
+                    <CardIcon/>
+                   
                 </Div>
+                {isCartOpen && <CartDropdown/>}
             </Div>
         <Outlet/>
         </Fragment>
