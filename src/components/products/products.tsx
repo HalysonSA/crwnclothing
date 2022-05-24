@@ -1,41 +1,31 @@
+import { useContext } from 'react';
+import { CartContext } from '../../context/cartcontext';
 import {CardContainer,Footer,Price,Name,ProductsContainer,Button} from './style';
 
-type Products={
-    product:{
-        id:any,
-        price:number,
-        imageUrl:string,
-        name:string
-    }[]
-      
-  }
 
-const ProductCard = (props:Products) => {
-    
-       const {product} = props
+
+const ProductCard = ({product}:any) => {
+    const {imageUrl,name,price} = product
+    const {addItemToCart} = useContext(CartContext)
        
        console.log('card')
-    
+    const addProductToCart = () => addItemToCart(product)
     return(
-       <ProductsContainer>
-            {product.map(( product:any)=>(
-                <CardContainer key={product.id} >
-                    <img src={product.imageUrl} alt={`${product.name}`} />
-                    <Footer>
-                        <Name>
-                                {product.name}
-                        </Name>
-                        <Price>
-                                {product.price}
-                        </Price>
-                    </Footer>
-                    <Button>ADD TO CART</Button>
-                    </CardContainer>
-            ))}
+       
+                <CardContainer>
+                        <img src={imageUrl} alt={`${name}`} />
+                        <Footer>
+                            <Name>{name}</Name>
+                            <Price>{price}</Price>
+                        </Footer>
+          
+                    <Button onClick={addProductToCart}>ADD TO CART</Button>
+                </CardContainer>
+            
 
-        </ProductsContainer>
+      
          
          
     )
-            }
+}
 export default ProductCard

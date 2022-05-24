@@ -12,6 +12,7 @@ export const CartContainer = styled.div`
     top: 90px;
     right: 40px;
     z-index: 5;
+    overflow: scroll;
     & .itens{
         height: 240px;
         display: flex;
