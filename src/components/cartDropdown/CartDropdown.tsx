@@ -1,22 +1,30 @@
 
 import { CartContext } from '../../context/cartcontext'
-import {CartContainer} from './style'
-import {Button} from '../signInForm/style'
+import {CartContainer,Button} from './style'
 import { useContext } from 'react'
 import CartItem from '../cartItem/cartItem'
 const CartDropdown = () =>{
-    const {cartItems} = useContext(CartContext)
+    const {cartItems,cartPrice} = useContext(CartContext)
     return(
         <CartContainer>
-            <div className="itens">
-                   {cartItems.map((item:any)=>
+            <div className="items">
+                   {cartItems.length ? (
+                   cartItems.map((item:any)=>(
+                       
                     <CartItem key={item.id} cartItem={item} />
+                   ))
                    
+    ):(
+    <span className='empty'>Your Cart is empty</span>
+    )}
                    
-
-                   )}
+               
+                    
+               
+                    
             </div>
-            <Button className="button">GO TO CHECKOUT</Button>
+            <span >Total: {cartPrice}</span>
+            <Button className='button' >GO TO CHECKOUT</Button>
         </CartContainer>
     )
 }

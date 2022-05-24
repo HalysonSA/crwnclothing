@@ -1,12 +1,22 @@
-import {Image} from './style'
+
+import {Container,Details} from './style'
 const CartItem = ({ cartItem}:any) =>{
+    
     const {imageUrl, name, quantity, price } = cartItem;
     return(
-        <div>
-            <Image src={imageUrl}/>
-            <h2>{name}</h2>
-            <span>{quantity} x R${price}</span>
-        </div>
+        <Container>
+            <img src={imageUrl} alt={`${name}`}/>
+            <Details>
+
+                <span className='name'> {name} </span>
+                <span className='price'>
+                    {quantity} x R${price}
+                </span>
+                
+            </Details>
+            
+        </Container>
+        
     )
 }
 export default CartItem
