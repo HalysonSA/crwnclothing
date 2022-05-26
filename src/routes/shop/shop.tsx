@@ -12,7 +12,7 @@ const Shop = () => {
         {products.map((product:any)=>(
           <ProductCard key={product.id} product={product}/>
         ))}   
-          {/*   <ProductCard product={products}/> */}
+          
        
       </ProductsContainer>
   

@@ -2,7 +2,7 @@ import { useState} from 'react'
 
 
 
-import {createUserAuth,signUserEmail,signInWithGooglePopUp} 
+import {createUserAuth,signUserEmail,signInWithGooglePopUp,signInWithGoogleRedirect} 
 from '../../utills/firebase/firebase'
 import {FirebaseError} from '@firebase/util'
 import {
@@ -28,7 +28,7 @@ export const SignInForm = () =>{
 
     const SignWithGoogle = async () => {
     
-    const { user } = await signInWithGooglePopUp();
+    const { user } = await signInWithGoogleRedirect();
     
         
     } 

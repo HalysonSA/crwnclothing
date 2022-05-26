@@ -4,10 +4,10 @@ import {CartContainer,Button} from './style'
 import { useContext } from 'react'
 import CartItem from '../cartItem/cartItem'
 const CartDropdown = () =>{
-    const {cartItems,cartPrice} = useContext(CartContext)
+    const {cartItems} = useContext(CartContext)
     return(
         <CartContainer>
-            <div className="items">
+            <div >
                    {cartItems.length ? (
                    cartItems.map((item:any)=>(
                        
@@ -15,7 +15,7 @@ const CartDropdown = () =>{
                    ))
                    
     ):(
-    <span className='empty'>Your Cart is empty</span>
+    <span >Your Cart is empty</span>
     )}
                    
                
@@ -23,8 +23,8 @@ const CartDropdown = () =>{
                
                     
             </div>
-            <span >Total: {cartPrice}</span>
-            <Button className='button' >GO TO CHECKOUT</Button>
+           
+            <Button  >GO TO CHECKOUT</Button>
         </CartContainer>
     )
 }

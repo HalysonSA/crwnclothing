@@ -17,20 +17,7 @@ export const CartContainer = styled.div`
     ::-webkit-scrollbar{width:6px;}
     ::-webkit-scrollbar-thumb{background-color:#000;border-radius:20px;}
 
-    &.items{
-        height: 240px;
-        display: flex;
-        flex-direction: column;
-        
-    }
     
-    &.empty{
-        font-size: 18px;
-        margin: 50px auto;
-    }
-    &.button{
-        margin-top: auto;
-    }
 `
 
 export const Button = styled.button`
