@@ -8,7 +8,7 @@ const ProductCard = ({product}:any) => {
     const {imageUrl,name,price} = product
     const {addItemToCart} = useContext(CartContext)
        
-       console.log('card')
+       
     const addProductToCart = () => addItemToCart(product)
     return(
        

@@ -20,7 +20,7 @@ export const Div = styled.div`
             & .link{
             padding: 10px 15px;  
             font-family: 'Encode Sans Semi Condensed', sans-serif;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 500;
             }
 
